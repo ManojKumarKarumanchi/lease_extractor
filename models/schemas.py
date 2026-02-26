@@ -3,6 +3,7 @@
 from typing import List, Optional
 from pydantic import BaseModel, Field
 
+
 class PageOCR(BaseModel):
     """OCR results for a single page."""
 
@@ -20,6 +21,7 @@ class PageOCR(BaseModel):
         default_factory=list, description="Signature descriptions"
     )
     confidence: float = Field(ge=0, le=1, description="OCR confidence sapp 0-1")
+
 
 class LeaseKVPairs(BaseModel):
     """Structured lease summary matching the required output template."""
@@ -276,6 +278,7 @@ class QAResponse(BaseModel):
     relevant_excerpt: str = Field(
         description="Exact text excerpt supporting the answer"
     )
+
 
 # Field categories for displaying KV pairs
 KV_FIELD_CATEGORIES = {

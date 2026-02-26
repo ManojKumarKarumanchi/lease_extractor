@@ -62,7 +62,7 @@ def extract_kv_pairs(ocr_results: List[PageOCR]) -> LeaseKVPairs:
         # Return safe default on error
         return LeaseKVPairs()
 
-    
+
 def answer_question(question: str, ocr_results: List[PageOCR]) -> QAResponse:
     """Answer questions about the lease document with page references and confidence.
 

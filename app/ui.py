@@ -17,6 +17,7 @@ from app.extraction import answer_question, extract_kv_pairs
 from utils.ocr import parallel_ocr
 from models.schemas import LeaseKVPairs, PageOCR, QAResponse, KV_FIELD_CATEGORIES
 
+
 def render_ocr_results(ocr_results: list[PageOCR]) -> None:
     """Render OCR results for each page."""
     for page in ocr_results:
@@ -100,9 +101,7 @@ def render_qa_section(
                 if qa.section_reference:
                     st.caption(f"📍 {qa.section_reference}")
                 if qa.reference_pages:
-                    page_refs = ", ".join(
-                        [f"Page {p}" for p in qa.reference_pages]
-                    )
+                    page_refs = ", ".join([f"Page {p}" for p in qa.reference_pages])
                     st.caption(f"📄 {page_refs}")
 
             with col2:
@@ -135,9 +134,7 @@ def render_qa_section(
 
     col_ask, col_clear = st.columns([4, 1])
     with col_ask:
-        ask_button = st.button(
-            "🔍 Ask", type="primary", use_container_width=True
-        )
+        ask_button = st.button("🔍 Ask", type="primary", use_container_width=True)
     with col_clear:
         clear_button = st.button("🗑️ Clear History", use_container_width=True)
 

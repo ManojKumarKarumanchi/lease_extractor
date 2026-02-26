@@ -104,9 +104,7 @@ def clear_cache() -> None:
 def get_cache_count() -> int:
     """Get the number of cached documents."""
     try:
-        cache_files = [
-            f for f in os.listdir(CACHE_DIR) if f.endswith(".json")
-        ]
+        cache_files = [f for f in os.listdir(CACHE_DIR) if f.endswith(".json")]
         return len(cache_files) // 3 if cache_files else 0
     except Exception:
         return 0

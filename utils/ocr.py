@@ -93,9 +93,7 @@ def pdf_to_images(pdf_path: str, dpi: int = 600) -> List[str]:
     return images
 
 
-def parallel_ocr(
-    pdf_path: str, max_workers: int = 5, dpi: int = 600
-) -> List[PageOCR]:
+def parallel_ocr(pdf_path: str, max_workers: int = 5, dpi: int = 600) -> List[PageOCR]:
     """Process all PDF pages in parallel.
 
     Args:
