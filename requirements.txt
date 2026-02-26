@@ -1,0 +1,12 @@
+agno
+python-dateutil
+python-dotenv
+requests
+pypdf
+psycopg2-binary
+sqlalchemy
+pgvector
+Pillow
+openai
+streamlit
+pymupdf
