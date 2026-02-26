@@ -11,6 +11,7 @@ from utils.config import (
     AZURE_OPENAI_ENDPOINT,
 )
 from models.schemas import LeaseKVPairs, PageOCR, QAResponse
+from prompts.prompts import qa_agent_prompt, extract_kv_pairs_prompt
 
 
 def extract_kv_pairs(ocr_results: List[PageOCR]) -> LeaseKVPairs:
@@ -39,17 +40,7 @@ def extract_kv_pairs(ocr_results: List[PageOCR]) -> LeaseKVPairs:
             azure_endpoint=AZURE_OPENAI_ENDPOINT,
         ),
         output_schema=LeaseKVPairs,
-        instructions=[
-            "You are a lease document extraction expert specializing in commercial real estate.",
-            "Extract all key lease terms according to the provided schema.",
-            "Focus on these critical fields: tenant, landlord, address, lease dates, rent amounts, security deposit, renewal options, termination clauses, and special provisions.",
-            "For dates, use format YYYY-MM-DD if available, otherwise use the exact text from the document.",
-            "For monetary amounts, extract as text (including currency and any conditions).",
-            "For yes/no fields, respond with 'Yes' or 'No'.",
-            "If a field is not found in the document, leave it as null.",
-            "Extract exact text from the document for complex clauses - do not paraphrase.",
-            "If information spans multiple pages, capture the complete clause.",
-        ],
+        instructions=extract_kv_pairs_prompt,
     )
 
     try:
@@ -105,17 +96,7 @@ def answer_question(question: str, ocr_results: List[PageOCR]) -> QAResponse:
             azure_endpoint=AZURE_OPENAI_ENDPOINT,
         ),
         output_schema=QAResponse,
-        instructions=[
-            "You are a legal document Q&A expert with expertise in commercial lease agreements.",
-            "Answer questions based ONLY on the provided document text.",
-            "Always cite the specific page number(s) where you found the answer.",
-            "Identify the section, clause, or article reference if available (e.g., 'Article 3: Rent', 'Section 4.2: Late Fees').",
-            "Provide exact text excerpts that support your answer.",
-            "If the answer involves multiple parts of the document, cite all relevant pages.",
-            "Rate your confidence from 0 to 1 based on how explicitly the answer appears in the document.",
-            "If the document does not contain information to answer the question, state that clearly with confidence 0.",
-            "For ambiguous or conflicting information, note the conflict in your answer.",
-        ],
+        instructions=qa_agent_prompt,
     )
 
     try:
