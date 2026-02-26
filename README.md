@@ -204,7 +204,7 @@ For the full schema, see `models/schemas.py` (`LeaseKVPairs`, `PageOCR`, `QAResp
   - **Streamlit UI & UX**
     - Sidebar workflow, tabbed layout (OCR / Extracted Fields / Q&A), conversation history, download/export. 
     - Used Streamlit and Agno AGI docs and ai chatbot assistants.
-    - Links: 
+    - Links: https://docs.agno.com/, https://docs.streamlit.io/, https://chatgpt.com/
 ---
 
 ## Edge Case Analysis
