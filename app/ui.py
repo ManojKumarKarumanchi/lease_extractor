@@ -189,14 +189,14 @@ def render_sidebar() -> tuple:
 
             # Check if file is already loaded
             if st.session_state.file_hash == file_hash:
-                st.info("✅ This document is already loaded!")
+                st.info("This document is already loaded!")
                 if st.button("🔄 Reload from Disk", use_container_width=True):
                     cache_result = load_from_cache(file_hash)
                     if cache_result:
                         st.session_state.ocr_results, st.session_state.kv_pairs = (
                             cache_result
                         )
-                        st.success("✅ Loaded from cache!")
+                        st.success("Loaded from cache!")
                         st.rerun()
             else:
                 if st.button(
@@ -227,7 +227,7 @@ def render_sidebar() -> tuple:
                                 pdf_path, max_workers, dpi
                             )
                         st.success(
-                            f"✅ OCR complete: {len(st.session_state.ocr_results)} pages"
+                            f"OCR complete: {len(st.session_state.ocr_results)} pages"
                         )
 
                         # Step 2: Extract KV pairs
@@ -235,7 +235,7 @@ def render_sidebar() -> tuple:
                             st.session_state.kv_pairs = extract_kv_pairs(
                                 st.session_state.ocr_results
                             )
-                        st.success("✅ Extraction complete!")
+                        st.success("Extraction complete!")
 
                         # Save to cache
                         with st.spinner("💾 Saving to cache..."):

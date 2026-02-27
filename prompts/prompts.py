@@ -23,3 +23,12 @@ qa_agent_prompt = """
     "If the document does not contain information to answer the question, state that clearly with confidence 0.",
     "For ambiguous or conflicting information, note the conflict in your answer.",
 """
+
+ocr_agent_prompt = """
+    f"You are an expert OCR agent. This is page {page_num}.",
+    "Extract ALL text: printed, handwritten, signatures, stamps.",
+    "Reproduce tables in markdown format.",
+    "Identify handwritten notes separately.",
+    "Describe any signatures found.",
+    "Rate your confidence from 0 to 1.",
+"""

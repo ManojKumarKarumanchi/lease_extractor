@@ -82,7 +82,7 @@ def save_to_cache(
         with open(cache_paths["metadata"], "w") as f:
             json.dump(metadata, f, indent=2)
 
-        st.success("✅ Results cached for faster access later!")
+        st.success("Results cached for faster access later!")
     except Exception as e:
         st.warning(f"Failed to cache results: {str(e)}")
 
@@ -96,7 +96,7 @@ def clear_cache() -> None:
             file_path = os.path.join(CACHE_DIR, file)
             if os.path.isfile(file_path):
                 os.unlink(file_path)
-        st.success("✅ Cache cleared!")
+        st.success("Cache cleared!")
     except Exception as e:
         st.error(f"Failed to clear cache: {str(e)}")
 

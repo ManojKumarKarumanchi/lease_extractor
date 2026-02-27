@@ -198,6 +198,7 @@ For the full schema, see `models/schemas.py` (`LeaseKVPairs`, `PageOCR`, `QAResp
   - **Prompt refinement** for:
     - Lease KV‑pair extraction (`extract_kv_pairs_prompt`).
     - Legal Q&A with explicit citations and confidence (`qa_agent_prompt`).
+    - Legal OCR extraction page by page (`ocr_agent_prompt`).
   - **Schema tuning & field naming** to better match real‑world lease review workflows.
   - **Readme refinement** : Updating and phrasing readme file.
   - **Minor debugging and refactoring suggestions** (e.g., safer response handling, edge‑case defaults).

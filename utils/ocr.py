@@ -17,6 +17,7 @@ from utils.config import (
     AZURE_OPENAI_ENDPOINT,
 )
 from models.schemas import PageOCR
+from prompts.prompts import ocr_agent_prompt
 
 
 def ocr_single_page_from_path(img_path: str, page_num: int) -> PageOCR:
@@ -28,14 +29,7 @@ def ocr_single_page_from_path(img_path: str, page_num: int) -> PageOCR:
             azure_endpoint=AZURE_OPENAI_ENDPOINT,
         ),
         output_schema=PageOCR,
-        instructions=[
-            f"You are an expert OCR agent. This is page {page_num}.",
-            "Extract ALL text: printed, handwritten, signatures, stamps.",
-            "Reproduce tables in markdown format.",
-            "Identify handwritten notes separately.",
-            "Describe any signatures found.",
-            "Rate your confidence from 0 to 1.",
-        ],
+        instructions=ocr_agent_prompt
     )
 
     try:
